@@ -1,0 +1,63 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-family: 'Archivo';
+}
+
+.login{
+    background-color: #8257e6;
+    border-radius: 0.5rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form h1{
+    text-align: center;
+    color: #e1e1e6;
+}
+
+form input{
+    width: 16rem;
+    margin: 1rem;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: navajowhite;
+}
+
+button{
+       margin: 1rem;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: navajowhite;
+    background-color: white;
+    width: 89%;
+}
+
+.robo{
+    display: flex;
+    flex-direction: column;
+}
+
+.robo button{
+    color: white;
+    background-color: #8257e6;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-family: 'Archivo';
+}
+
+.none{
+    display: none;
+}
