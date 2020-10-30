@@ -5,15 +5,14 @@ let senha = document.getElementById('senha');
 
 
 const options = {
-    uri: 'http://globoesporte.globo.com/futebol/brasileirao-serie-a/',
+    uri: 'https://www.google.com/search?q=.alboompro.com&oq=.alboompro.com&aqs=chrome..69i58j69i57j69i60l2.2054j0j4&sourceid=chrome&ie=UTF-8',
     transform: function (body) {
         return cheerio.load(body)
     }
 }
 
 
-
-
+var resultado2 = ['http://www.ederoliveirafotografo.com.br/', 'https://www.thalesmarques.com.br/portfolio/ensaio-noiva/513607-patricia_souza', 'http://cristianoborgesfotografia.com.br.seotoolsalgorithm.com/', 'http://www.archivebay.com/site/weddingsniper.com.br--2020-05-08__08-11-48']
 
 
 function gR() {
@@ -43,28 +42,69 @@ function getRobo() {
     robo.classList.remove('none');
 }
 
+function getConsultas() {
+
+}
+
+getConsultas();
+
 function pr() {
     let processando = document.getElementById('processando');
     processando.classList.remove('none');
-    setTimeout(() => {
 
-        var csv = 'site\n';
+    const consultas = localStorage.getItem('consultas');
 
-        resultado.forEach(function (row) {
-            csv += '\n' + row;
-        });
+    if (consultas > 2) {
+        alert('Você ja fez bastante consultas, aguarde mais');
 
-        var hiddenElement = document.createElement('a');
-        hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-        hiddenElement.target = '_blank';
-        hiddenElement.download = 'produtos.csv';
-        hiddenElement.click();
-
+        location.reload();
+    }
+    if (consultas == 1) {
         setTimeout(() => {
-            document.location.reload();
-        }, 2000);
 
-    }, 5000)
+            var csv = 'site\n';
+
+            resultado2.forEach(function (row) {
+                csv += '\n' + row;
+            });
+
+            var hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+            hiddenElement.target = '_blank';
+            hiddenElement.download = 'produtos.csv';
+            hiddenElement.click();
+
+            alert('O navegador bloqueou a pesquisa e os resultados foram poucos, aguarde para pesquisar novamente');
+
+            setTimeout(() => {
+                document.location.reload();
+            }, 2000);
+
+        }, 5000)
+
+    } else {
+        setTimeout(() => {
+
+            var csv = 'site\n';
+
+            resultado.forEach(function (row) {
+                csv += '\n' + row;
+            });
+
+            var hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+            hiddenElement.target = '_blank';
+            hiddenElement.download = 'produtos.csv';
+            hiddenElement.click();
+
+            setTimeout(() => {
+                document.location.reload();
+            }, 2000);
+
+        }, 5000)
+    }
+
+    localStorage.setItem("consultas", consultas + 1);;
 }
 dispatchEvent('http://matheusbrunoalmeida.com/api').then(response => {
     let result = response.data;
@@ -88,3 +128,4 @@ rp(options)
     .catch((err) => {
         console.log(err);
     });
+
